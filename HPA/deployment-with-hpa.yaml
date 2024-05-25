@@ -1,0 +1,41 @@
+apiversion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-autoscaling-app
+spec:
+  selector:
+    matchLabels: 
+      name: autoscaling
+  replicas: 2
+  template:
+    metadata:
+     labels:
+      name: autoscaling
+    spec:
+    - containers:
+        name: k8s-autoscaling-app
+        image:  lovelearnlinux/webserver:v1
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512mi
+          requests:
+            cpu: 250m
+            memory: 256mi
+---
+#creating Service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-autoscaler-service
+  labels:
+    name: autoscaling
+spec:
+  type: ClusterIp
+  ports:
+  - port: 80
+  selector:
+    name: autoscaling
