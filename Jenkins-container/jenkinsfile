@@ -1,0 +1,24 @@
+node{
+    stage("Git Clone"){
+        git credentialsId: 'b9422ee1-b395-447d-b478-a08f3aee80c4', url: 'https://github.com/N4si/DevSecOps-Project.git'
+    }
+    stage("Maven Clean Build"){
+        def mavenHome = tool name:"Maven-3.9.0", type: "maven"
+        def mavenCMD = "${mavenHome}/bin/mvn"
+        sh "${mavenCMD} clean package"
+    }
+    stage("Build Docker Image"){
+        withCredentials([string(credentialsId: 'TMDB_API_KEY', variable: 'TMDB_API_KEY')]){
+            sh "docker build --build-arg TMDB_V3_API_KEY='$TMDB_API_KEY' -t netflix ."
+        }
+    }
+    stage("Pushing Docker image to docker hub"){
+        withCredentials([usernamePassword(credentialsId: 'dockerhub-login', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
+            sh "docker login -u '$USERNAME' -p '$PASSWORD'"
+            sh "docker tag netflix udubey25/netflix:v2"
+            sh "docker push udubey25/netflix:v2"            
+        }
+
+    }
+    
+}
