@@ -7,8 +7,6 @@ pipeline{
 
       environment {
         SCANNER_HOME = tool 'sonar-scanner'
-        mavenHome = tool "Maven"
-        mavenCMD = "${mavenHome}/bin/mvn"
       }
     stages{
         stage("Git Clone"){
