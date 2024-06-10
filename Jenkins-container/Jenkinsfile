@@ -46,7 +46,7 @@ pipeline{
         }
         stage("Deploying the App on Cluster"){
             steps{
-                sh "kubectl create -f Kubernetes/deployment.yml"
+                sh "kubectl apply -f Kubernetes/deployment.yml"
             }
         }
 
