@@ -42,6 +42,8 @@ pipeline{
                 sh "docker tag netflix udubey25/netflix:v2"
                 sh "docker push udubey25/netflix:v2"            
             }
+            }
+        }
         stage("Deploying the App on Cluster"){
             steps{
                 sh "kubectl create -f Kubernetes/deployment.yml"
@@ -50,6 +52,3 @@ pipeline{
 
         }
         }
-        
-    }
-}
