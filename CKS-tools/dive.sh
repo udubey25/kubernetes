@@ -5,6 +5,6 @@ sudo apt install ./dive_${DIVE_VERSION}_linux_amd64.deb
 
 
 #Usage:
-dive <image-name>
+#dive <image-name>
 
 #Credits: https://github.com/wagoodman/dive
