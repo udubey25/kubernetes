@@ -1,0 +1,29 @@
+For dynamic Pod scanning we can use Falco
+We can install using helm on the cluster which will setup falco as a daemon set
+Any activity taking place inside the application pod on the node will get recorded as the logs of the falco pod running on the same node.
+This can be tiresome as we will have to check the logs of the falco pod everytime we want to check the events of the application pod.
+To make it more user friendly we can use falco-sidekick which will give us a dashboard to view all the events by all the pods running in the cluster.
+=================================================
+Setting up the falco
+=================================================
+-->helm repo add falcosecurity https://falcosecurity.github.io/charts
+-->helm repo update
+-->kubectl create ns falco
+-->helm install falco -n falco --set tty=true falcosecurity/falco --set driver.kind=modern_ebpf
+=================================================
+
+FALCO with SIDEKICK
+=================================================
+-->helm install falco -n falco --set tty=true falcosecurity/falco \
+--set falcosidekick.enabled=true \
+--set falcosidekick.webui.enabled=true \
+--set falcosidekick.webui.redis.storageEnabled=false --set driver.kind=modern_ebpf
+
+#kubectl get all -n falco
+This will give the status of all the resources created by the above falco chart
+Now we can expose the falco-sidekick-ui deployment using the node port service to access the dashboard.
+
+#kubectl expose deployment -n falco falco-sidekick-ui --name falco-sidekick-ui-np --type NodePort
+
+Access the dashboard using http://<ip-of-managernode:nodePort>
+username and password will be admin to login to the dashboard
