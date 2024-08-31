@@ -1,0 +1,13 @@
+**********************
+Trivy: What and How
+**********************
+It's a tool that can be used to scan the container images to check for any vulnerabilities which can help us in securing our production clusters.
+
+====================================
+Setup:
+====================================
+sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+sudo apt-get update
+sudo apt-get install trivy
