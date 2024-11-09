@@ -43,7 +43,7 @@ subjects:
     name: laxman
     apiGroup: rbac.authorization.k8s.io/v1
 roleRef:
-  - kind: Role
+    kind: Role
     name: dev-a-role
     apiGroup: rbac.authorization.k8s.io/v1
 
@@ -58,7 +58,7 @@ subjects:
     name: laxman
     apiGroup: rbac.authorization.k8s.io/v1
 roleRef:
-  - kind: Role
+    kind: Role
     name: dev-b-role
     apiGroup: rbac.authorization.k8s.io/v1
 
@@ -73,6 +73,6 @@ subjects:
     name: laxman
     apiGroup: rbac.authorization.k8s.io/v1
 roleRef:
-  - kind: Role
+    kind: Role
     name: dev-z-role
     apiGroup: rbac.authorization.k8s.io/v1
