@@ -41,11 +41,11 @@ metadata:
 subjects:
   - kind: User
     name: laxman
-    apigroup: rbac.authorization.k8s.io/v1
+    apigroup: rbac.authorization.k8s.io
 roleRef:
     kind: Role
     name: dev-a-role
-    apigroup: rbac.authorization.k8s.io/v1
+    apigroup: rbac.authorization.k8s.io
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -56,11 +56,11 @@ metadata:
 subjects:
   - kind: User
     name: laxman
-    apigroup: rbac.authorization.k8s.io/v1
+    apigroup: rbac.authorization.k8s.io
 roleRef:
     kind: Role
     name: dev-b-role
-    apigroup: rbac.authorization.k8s.io/v1
+    apigroup: rbac.authorization.k8s.io
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -71,8 +71,8 @@ metadata:
 subjects:
   - kind: User
     name: laxman
-    apigroup: rbac.authorization.k8s.io/v1
+    apigroup: rbac.authorization.k8s.io
 roleRef:
     kind: Role
     name: dev-z-role
-    apigroup: rbac.authorization.k8s.io/v1
+    apigroup: rbac.authorization.k8s.io
