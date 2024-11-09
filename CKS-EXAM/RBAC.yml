@@ -4,7 +4,7 @@ metadata:
   namespace: dev-a
   name: dev-a-role
 rules:
-  - apigroups: [""]
+  - apiGroups: ["apps/v1"]
     resources: ["pods"]
     verbs: [""] 
 
@@ -15,7 +15,7 @@ metadata:
   namespace: dev-b
   name: dev-b-role
 rules:
-  - apigroups: [""]
+  - apiGroups: [""]
     resources: ["pods"]
     verbs: [""]
 
@@ -26,7 +26,7 @@ metadata:
   namespace: dev-z
   name: dev-z-role
 rules:
-  - apigroups: [""]
+  - apiGroups: [""]
     resources: ["pods"]
     verbs: ["get","list"]
 
