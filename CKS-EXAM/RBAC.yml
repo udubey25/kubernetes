@@ -1,0 +1,78 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: dev-a
+  name: dev-a-role
+rules:
+  - apigroups: [""]
+    resources: ["pods"]
+    verbs: [""] 
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: dev-a
+  name: dev-b-role
+rules:
+  - apigroups: [""]
+    resources: ["pods"]
+    verbs: [""]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: dev-a
+  name: dev-z-role
+rules:
+  - apigroups: [""]
+    resources: ["pods"]
+    verbs: ["get","list"]
+
+---
+#Rolebindings
+
+apiversion: rbac.authorization.k8s.io/v1
+kind: Rolebindings
+metadata:
+  name: dev-a-rolebinding
+  namespace: dev-a
+subjects:
+  - kind: User
+    name: laxman
+    apigroup: rbac.authorization.k8s.io/v1
+roleRef:
+  - kind: Role
+    name: dev-a-role
+    apigroup: rbac.authorization.k8s.io/v1
+
+---
+apiversion: rbac.authorization.k8s.io/v1
+kind: Rolebindings
+metadata:
+  name: dev-b-rolebinding
+  namespace: dev-b
+subjects:
+  - kind: User
+    name: laxman
+    apigroup: rbac.authorization.k8s.io/v1
+roleRef:
+  - kind: Role
+    name: dev-b-role
+    apigroup: rbac.authorization.k8s.io/v1
+
+---
+apiversion: rbac.authorization.k8s.io/v1
+kind: Rolebindings
+metadata:
+  name: dev-z-rolebinding
+  namespace: dev-z
+subjects:
+  - kind: User
+    name: laxman
+    apigroup: rbac.authorization.k8s.io/v1
+roleRef:
+  - kind: Role
+    name: dev-z-role
+    apigroup: rbac.authorization.k8s.io/v1

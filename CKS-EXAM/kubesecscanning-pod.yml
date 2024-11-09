@@ -1,0 +1,5 @@
+#Scan a given pods yaml present at a location /root/CKS/sample-pod.yml and fix the yaml as suggested
+kubesec scan /root/CKS/sample-pod.yml
+#as per the suggestion fix the yaml
+#run the scan again and and save the report at a given location.
+#kubesec scan /root/CKS/sample-pod.yaml > /tmp/kubesec-report.txt

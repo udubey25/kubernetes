@@ -1,0 +1,4 @@
+#given certain images we need run a pod with the image having the least number of critical vulnerabilities.
+trivy image --severity critical <image name>
+
+#Now run a pod with the least number of CRITICAL vuln image

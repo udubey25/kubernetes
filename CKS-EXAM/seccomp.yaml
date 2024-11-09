@@ -1,0 +1,29 @@
+#A seccomp profile will be present which would be missing read and write syscall names in it. Add it in the profile and start the mentioned pod using the seccomp profile
+
+{
+    "defaultAction": "SCMP_ACT_ERRNO",
+    "architectures": [
+        "SCMP_ARCH_X86_64",
+        "SCMP_ARCH_X86",
+        "SCMP_ARCH_X32"
+    ],
+    "syscalls": [
+        {
+            "names": [
+                "accept4",
+                "epoll_wait",
+                "pselect6",
+                "futex",
+                "madvise",
+                "epoll_ctl",
+                "getsockname",
+                "setsockopt",
+                "vfork",
+                "mmap",
+                "read",
+                "write",
+            ]
+        }
+        action : "SCMP_ACT_ALLOW"
+    ]
+}
