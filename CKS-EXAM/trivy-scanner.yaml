@@ -1,4 +1,7 @@
 #given certain images we need run a pod with the image having the least number of critical vulnerabilities.
-trivy image --severity critical <image name>
+#list the containers with images
+#kubectl get pods -n delta -o custom-columns='NAME:.spec.containers[0].name,IMAGE:.spec.containers[0].image'
+#trivy image --severity critical <image name> | grep -i Total
 
 #Now run a pod with the least number of CRITICAL vuln image
+#kubectl -n namespace run <pod-name> --image-name:

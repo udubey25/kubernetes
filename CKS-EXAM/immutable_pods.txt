@@ -1,0 +1,1 @@
+few pods would be running on the cluster with elevated access in security context as privileged=true and readOnlyRootFilesystem: false These pods are immutable.Hence identify such pods by viewing their yaml and delete such pods

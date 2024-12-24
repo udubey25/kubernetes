@@ -1,0 +1,12 @@
+#We need to set the priority to alert and print the logs in a specific format
+#Use below commands
+
+--> #journalctl -fu falco
+#grep -R "a shell was spawned" --> this will give us the location where the falco rule file is placed
+#copy the existing content from the file and paste it under /etc/falco/falco_rules.local.yaml
+
+#modify the output field as per the format
+ # output:>
+ #    %evt.time,%user.uid,%container.id,%container.image.repository
+#systemctl restart falco
+#journalctl -fu falco

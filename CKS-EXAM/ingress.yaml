@@ -1,0 +1,24 @@
+#create an ingress resource with an host and route the traffic to web service for all the path, also implement http to https redirection
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"  # HTTP to HTTPS redirection
+spec:
+  tls:
+  - hosts:
+    - example.com
+    secretName: tls-secret  # Name of the secret containing the TLS certificate and key
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: web-service
+            port:
+              number: 80

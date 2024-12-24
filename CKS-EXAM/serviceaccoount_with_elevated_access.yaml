@@ -1,0 +1,15 @@
+#update the service account <account_name> with the parameter automountServiceAccounttoken:false and then recreate the service account and the pod again
+#kubectl -n dev get pods
+#kubectl -n dev get pod <podname> -o yaml > q8.yaml
+#kubectl -n dev delete pod <podname>
+#kubectl -n dev get sa
+#kubectl -n dev delete sa cluster-job
+#<now search for serviceaccount>
+#create a new one with 
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: build-robot
+automountServiceAccountToken: false
+
+#create sa again and pod again
