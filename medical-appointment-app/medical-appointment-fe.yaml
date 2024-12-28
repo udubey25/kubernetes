@@ -4,7 +4,7 @@ metadata:
   name: medical-appointment-app
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployments
 metadata:
   name: medical-appointment-fe
   labels:
@@ -15,13 +15,13 @@ spec:
   selector:
     matchLabels:
       app: medapp-fe
-template:
-  spec:
-    containers:
-    - name: medical-appointment-fe
-      image: udubey25/medical-appointment-frontend:v1
-      ports:
-      - containerPort: 80
-    metadata:
-      labels:
-        app: medapp-fe
+  template:
+    spec:
+      containers:
+      - name: medical-appointment-fe
+        image: udubey25/medical-appointment-frontend:v1
+        ports:
+        - containerPort: 80
+      metadata:
+        labels:
+          app: medapp-fe
