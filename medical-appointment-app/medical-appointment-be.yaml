@@ -12,11 +12,12 @@ spec:
     matchLabels:
       app: medapp-be
   template:
-    metadata:
-      labels:
-        app: medapp-be
-    containers:
-    - name: medical-appointment-app-be
-      image: udubey25/medical-appointment-backend:v1
-      ports:
-      - containerPort: 3000
+    spec:
+      metadata:
+        labels:
+          app: medapp-be
+      containers:
+      - name: medical-appointment-app-be
+        image: udubey25/medical-appointment-backend:v1
+        ports:
+        - containerPort: 3000
