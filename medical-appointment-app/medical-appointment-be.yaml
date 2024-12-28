@@ -20,4 +20,4 @@ spec:
       - name: medical-appointment-app-be
         image: udubey25/medical-appointment-backend:v1
         ports:
-        - containerPort: 3000
+        - containerPort: 5000
