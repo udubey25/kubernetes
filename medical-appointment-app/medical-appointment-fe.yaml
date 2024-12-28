@@ -4,9 +4,10 @@ metadata:
   name: medical-appointment-app
 ---
 apiVersion: apps/v1
-kind: Deployments
+kind: Deployment
 metadata:
   name: medical-appointment-fe
+  namespace: medical-appointment-app
   labels:
     app: medapp-fe
     type: frontend
@@ -22,6 +23,6 @@ spec:
         image: udubey25/medical-appointment-frontend:v1
         ports:
         - containerPort: 80
-      metadata:
-        labels:
-          app: medapp-fe
+    metadata:
+      labels:
+        app: medapp-fe
