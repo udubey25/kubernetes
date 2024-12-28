@@ -13,8 +13,8 @@ spec:
       app: medapp-be
   template:
     metadata:
-    labels:
-      app: medapp-be
+      labels:
+        app: medapp-be
     spec:
       containers:
       - name: medical-appointment-app-be
