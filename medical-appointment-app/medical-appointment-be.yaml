@@ -21,3 +21,6 @@ spec:
         image: udubey25/medical-appointment-backend:v1
         ports:
         - containerPort: 5000
+        env: 
+        - name: MONGO_URI 
+          value: "mongodb://mongo:27017/medical-appointment-app" 
