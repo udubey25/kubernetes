@@ -4,10 +4,15 @@ metadata:
   name: netflix-app
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+      - myclonedstream.com
+    secretName: tls-secret
   rules:
-  - host: selfstream.com
+  - host: myclonedstream.com
     http:
       paths:
       - path: /

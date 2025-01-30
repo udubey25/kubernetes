@@ -1,3 +1,8 @@
 dockerregcred.yaml
 dive_0.12.0_linux_amd64.deb
 admin-user-token-*
+kube-apiserver*
+*.crt
+*.csr
+tls.*
+tls.*
