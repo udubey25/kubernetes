@@ -1,9 +1,23 @@
 apiVersion: audit.k8s.io/v1
 kind: Policy
-omitStages:
-  - RequestReceived
 rules:
   - level: RequestResponse
     resources: 
     - group: ""
-      resources: ["pods","deployment","secrets"]
+      resources: ["namespaces"]
+  - level: RequestResponse
+    namespace: dev
+    resources:
+    - group: "apps/v1"
+      resources: ["deployments"]
+  - level: Metadata
+    resources:
+    - groups: ""
+      resources: ["configmaps", "secrets"]
+  - level: RequestResponse
+    resources:
+    - groups: ""
+      resources: ["nodes"]
+  - level: Metadata
+    
+
